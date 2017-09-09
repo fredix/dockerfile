@@ -5,5 +5,5 @@ dockerfile for gitea.io on arm64v8 and alpine
 
 (change fredix with your hub.docker.com account)
 
-docker build -f Dockerfile.arm64v8 -t fredix/arm64v8-gitea:v1.2 .
-docker push fredix/arm64v8-gitea:v1.2
+* docker build -f Dockerfile.arm64v8 -t fredix/arm64v8-gitea:v1.2 .
+* docker push fredix/arm64v8-gitea:v1.2
