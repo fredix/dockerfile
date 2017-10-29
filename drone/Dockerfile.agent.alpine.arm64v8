@@ -1,0 +1,7 @@
+FROM arm64v8/golang:1.9.2-alpine
+EXPOSE 8000 9000 80 443
+
+RUN apk add -U --no-cache ca-certificates git build-base
+RUN go get github.com/drone/drone/cmd/drone-agent
+
+ENTRYPOINT ["drone-agent"]
