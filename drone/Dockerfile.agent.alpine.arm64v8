@@ -1,9 +1,10 @@
 FROM arm64v8/golang:1.9.2-alpine
 ENV GODEBUG=netdns=go
 ENV DRONE_PLATFORM=linux/arm64
-EXPOSE 3000
 
 RUN apk add -U --no-cache ca-certificates git build-base
 RUN go get github.com/drone/drone/cmd/drone-agent
 
+EXPOSE 3000
+HEALTHCHECK CMD ["/bin/drone-agent", "ping"]
 ENTRYPOINT ["drone-agent"]
