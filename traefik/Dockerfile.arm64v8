@@ -1,5 +1,5 @@
 FROM arm64v8/alpine:3.6
-ADD https://github.com/containous/traefik/releases/download/v1.4.0/traefik_linux-arm64 /traefik
+ADD https://github.com/containous/traefik/releases/download/v1.4.2/traefik_linux-arm64 /traefik
 RUN apk upgrade --no-cache &&\
     apk add --no-cache ca-certificates &&\
     chmod +x /traefik
