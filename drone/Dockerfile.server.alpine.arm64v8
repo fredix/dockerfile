@@ -1,16 +1,19 @@
-FROM arm64v8/golang:1.9.2-alpine
+FROM arm64v8/golang:1.9.2-alpine as builder
+RUN apk add -U --no-cache git build-base sqlite-dev
+RUN go get github.com/drone/drone/cmd/drone-server
+
+FROM arm64v8/alpine:3.7
 MAINTAINER Frederic Logier <fredix@protonmail.com>
 
-EXPOSE 8000 9000 80 443
+COPY --from=builder /go/bin/drone-server /usr/bin/
 
-RUN apk add -U --no-cache ca-certificates git sqlite-dev build-base
-
-RUN go get github.com/drone/drone/cmd/drone-server
+RUN apk add -U --no-cache ca-certificates
 
 ENV DATABASE_DRIVER=sqlite3
 ENV DATABASE_CONFIG=/var/lib/drone/drone.sqlite
 ENV GODEBUG=netdns=go
 ENV XDG_CACHE_HOME /var/lib/drone
 
-ENTRYPOINT ["drone-server"]
+EXPOSE 8000 9000 80 443
 
+ENTRYPOINT ["drone-server"]
