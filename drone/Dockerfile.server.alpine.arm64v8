@@ -1,4 +1,4 @@
-FROM arm64v8/golang:1.9.2-alpine as builder
+FROM arm64v8/golang:1.9.4-alpine as builder
 RUN apk add -U --no-cache git build-base sqlite-dev
 RUN go get github.com/drone/drone/cmd/drone-server
 
