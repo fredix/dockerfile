@@ -1,9 +1,9 @@
-FROM arm64v8/alpine:3.7
+FROM arm64v8/alpine:3.8
 MAINTAINER Frederic Logier <fredix@protonmail.com>
 
 
 # Download and install gitea
-ENV GITEA_VERSION 1.4.0
+ENV GITEA_VERSION 1.5.1
 ENV GITEA_BINARY gitea-${GITEA_VERSION}-linux-arm64
 
 ADD https://dl.gitea.io/gitea/${GITEA_VERSION}/${GITEA_BINARY} /app/gitea/gitea
